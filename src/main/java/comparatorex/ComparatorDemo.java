@@ -18,9 +18,13 @@ public class ComparatorDemo {
 		list.add(obj2);
 		list.add(obj3);
 		list.add(obj4);
+		
 		list.forEach(obj->System.out.println(obj.getNumber()+ "  "+obj.getName()));
+		
 		Collections.sort(list, (ob1,ob2) -> ob1.getName().compareTo(ob2.getName()));
+		
 		System.out.println("after sorting");
+		
 		list.forEach(obj->System.out.println(obj.getNumber()+"  "+obj.getName()));
 	}
 
