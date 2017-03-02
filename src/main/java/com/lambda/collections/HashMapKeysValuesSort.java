@@ -13,15 +13,15 @@ import java.util.TreeMap;
 public class HashMapKeysValuesSort {
 
 	public static void main(String[] args) {
-		HashMapKeysValuesSort hashMapSort = new HashMapKeysValuesSort();
-		Map<Integer, String> hashMap = hashMapSort.createHashMap();
+		HashMapKeysValuesSort obj = new HashMapKeysValuesSort();
+		Map<Integer, String> hashMap = obj.createHashMap();
 		System.out.println("before sorting " + hashMap);
 		System.out.println("sorting keys map " + new TreeMap<Integer, String>(hashMap));
 
 		List<Map.Entry<Integer, String>> entries = new ArrayList<Map.Entry<Integer, String>>(hashMap.entrySet());
 
 		// hashMapSort.sortUsingFormalComparator(entries);
-		hashMapSort.sortUsingLamdaComparator(entries);
+		obj.sortUsingLamdaComparator(entries);
 	}
 
 	private void sortUsingLamdaComparator(List<Entry<Integer, String>> entries) {
