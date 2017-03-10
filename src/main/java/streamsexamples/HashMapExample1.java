@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  * 
  * @author kramreddy
  * create a map Map1 with <String, Integer> entries. create a result map Map2. 
- * Map2 should contain all the elements from Map1 where value >100
+ * Map2 should contain all the elements from Map1 where value >150
  * Map
  */
 public class HashMapExample1 {
@@ -16,10 +16,10 @@ public class HashMapExample1 {
 		Map<String,Integer> sourceMap = createMap();
 		
 		System.out.println("sourceMap : "+sourceMap);
-		
 		Map<String,Integer> resultMap = sourceMap.entrySet().stream()
-										.filter(map -> map.getValue()>150)
+										.filter(entry1 -> entry1.getValue()>150)
 										.collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+										//.collect(Collectors.toMap(p -> p.getKey(), q -> q.getValue()));
 		System.out.println("resultMap : "+resultMap);
 	}
 
