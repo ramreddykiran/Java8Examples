@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class ListWithStreamMethods1 {
+public class ListWithFilterMapReduceMethods1 {
 	public static void main(String[] args) {
-		ListWithStreamMethods1 l1 = new ListWithStreamMethods1();
+		ListWithFilterMapReduceMethods1 l1 = new ListWithFilterMapReduceMethods1();
 		List<Integer> listI = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 		l1.doubleEvenNumbersAndSum(listI);
 	}
@@ -29,7 +29,8 @@ public class ListWithStreamMethods1 {
 				.filter(e -> e % 2 ==0)
 				.map(e -> e * 2)
 				.reduce(Integer::sum);
-				*/ //returns Optional<Integer>
+				*/ 
+				//returns Optional<Integer>
 		
 		//specialized reduce operation
 		
