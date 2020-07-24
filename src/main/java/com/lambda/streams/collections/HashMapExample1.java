@@ -1,4 +1,4 @@
-package streamsexamples;
+package com.lambda.streams.collections;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 /**
  * 
- * @author kramreddy
+ * @author Kiran Ramreddy
  * create a map Map1 with <String, Integer> entries. create a result map Map2. 
  * Map2 should contain all the elements from Map1 where value >150
  * Map

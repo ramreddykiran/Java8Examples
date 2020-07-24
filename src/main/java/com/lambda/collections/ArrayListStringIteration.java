@@ -17,11 +17,12 @@ public class ArrayListStringIteration {
 		
 		list.forEach(i -> System.out.println(i));
 		
-		System.out.println("after sort");
+		System.out.println("\n \nafter sort");
 		
 		Collections.sort(list);
 		
-		list.forEach(i -> System.out.println(i));
+		//list.forEach(i -> System.out.println(i));
+		list.forEach(System.out::println);
 	}
 
 }

@@ -1,8 +1,5 @@
 package interfaces.definedmethods;
 
-import interfaces.I1;
-import interfaces.I2;
-
 public class SubClassDefined implements I1,I2{
 
 	@Override

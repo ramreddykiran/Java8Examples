@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.definedmethods;
 
 //@FunctionalInterface //Gives compilation error. FunctionalInterface allows only 1 obstract method
 public interface I1 {
