@@ -25,12 +25,12 @@ public class EmployeeListWithCollectToMapExample {
 		listEmp.add(new Employee("Dharma","131","MALE","SE"));
 
 
-		obj.mapNameDesgKeyEmpValue(listEmp);
+		obj.createMapWithNameDesgKeyEmpValue(listEmp);
 		obj.groupEmployeesWithDesg(listEmp);
 		obj.groupEmployeeNamesWithDesg(listEmp); //<desg, List<Name>>
 	}
 
-	private void mapNameDesgKeyEmpValue(List<Employee> listEmp) {
+	private void createMapWithNameDesgKeyEmpValue(List<Employee> listEmp) {
 		Map<String, Employee> map =
 			listEmp.stream()
 					.collect(toMap(
