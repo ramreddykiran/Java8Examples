@@ -1,6 +1,6 @@
 package interfaces.definedmethods;
 
-//@FunctionalInterface //Gives compilation error. FunctionalInterface allows only 1 obstract method
+//@FunctionalInterface //Gives compilation error. FunctionalInterface allows only 1 abstract method
 public interface I1 {
 	public void i1m1();
 	public void i1m2();
