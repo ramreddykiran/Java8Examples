@@ -9,6 +9,7 @@ public class ListWithMethodReference {
 		ListWithMethodReference l1 = new ListWithMethodReference();
 		List<Integer> listI = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 		l1.printList(listI);
+		l1.limitTheListTo5(listI);
 		l1.convertToStringAndPrint(listI);
 		l1.calculateSum(listI);
 		l1.covertToStringAndConcat(listI);
@@ -22,6 +23,14 @@ public class ListWithMethodReference {
 		// .forEach((e) ->System.out.println(e));
 		 //.forEach(e -> System.out.println(e));
 		 .forEach(System.out::print);
+		
+	}
+	
+	private void limitTheListTo5(List<Integer> listI) {
+		System.out.println("\nprinting values sith limit");
+		listI.stream()
+			.limit(5)
+			.forEach(System.out::println);
 	}
 
 	private void convertToStringAndPrint(List<Integer> listI) {

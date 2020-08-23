@@ -42,6 +42,7 @@ public class ListWithFilterFindFirstMethods1 {
 			.filter(ListWithFilterFindFirstMethods1::isEven)
 			.map(ListWithFilterFindFirstMethods1::doubleIt));
 			 //.findFirst()); // try un commenting this and run see the difference. above operations wont be invoked
+		 						//this tells streams have lazy evaluations and better performance.
 		
 		System.out.println("execution complete"); //it prints Optional[8] . Optional data type 
 	}
