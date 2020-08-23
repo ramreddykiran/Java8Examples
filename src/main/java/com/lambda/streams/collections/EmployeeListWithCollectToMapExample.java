@@ -34,8 +34,8 @@ public class EmployeeListWithCollectToMapExample {
 		Map<String, Employee> map =
 			listEmp.stream()
 					.collect(toMap(
-								emp -> emp.getEmpName()+ " - "+emp.getDesg(),
-								emp -> emp));
+								emp -> emp.getEmpName()+ " - "+emp.getDesg(), //keyMapper
+								emp -> emp));							//valueMapper
 		System.out.println("listToMap = "+map);
 	}
 	

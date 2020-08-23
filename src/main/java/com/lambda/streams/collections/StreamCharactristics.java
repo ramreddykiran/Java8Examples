@@ -6,7 +6,6 @@ import java.util.List;
 public class StreamCharactristics {
 	
 	public static void main(String[] args) {
-		//StreamCharactristics sc = new StreamCharactristics();
 		List<Integer> l1 = Arrays.asList(1,2,3,4,5,1,2,3,4,5);
 		l1.stream()
 			.filter(e -> e%2 == 0)

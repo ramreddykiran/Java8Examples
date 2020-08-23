@@ -24,35 +24,38 @@ public class MapKeyValueSortWithStreams {
 		obj.valueSortingWithStreams(hashMap);
 	}
 	
+	private void valueSortingWithLambdaAndStreams(Map<Integer, String> hashMap) {
+		hashMap.values().removeIf(Objects::isNull); //removes the null value entries from Map
+		List<Map.Entry<Integer, String>> entries = new ArrayList<Map.Entry<Integer,String>>(hashMap.entrySet());
+
+		Collections.sort(entries, (e1,e2)->e1.getValue().compareTo(e2.getValue()));
+		Map<Integer, String> resultMap =
+				entries.stream()
+						//.filter(e -> null!=e.getValue()) //null value entries already removed above
+						.collect(
+								toMap(Entry::getKey, 	  // keyMapper
+									  Entry::getValue,    // valueMapper
+									  (a,b) ->a,		 //mergeFunction 
+									  () -> new LinkedHashMap<>() //mapSupplier 
+									  //	LinkedHashMap::new 
+						));
+		System.out.println("after value sorting with lambda and streams "+ resultMap);
+	}
+	
 	private void valueSortingWithStreams(Map<Integer, String> hashMap) {
-		LinkedHashMap<Integer,String> resultMap = hashMap.entrySet()
-				.stream()
-				.sorted(Entry.comparingByValue()) // applies comparator logic on vlaues comparision
-				.collect(toMap(Entry::getKey, 		//keyMapper
-							Entry::getValue, 		//valueMapper
-							(first,second)->second, //mergeFunction
-						LinkedHashMap::new			//mapSupplier
+		LinkedHashMap<Integer,String> resultMap = 
+				hashMap.entrySet()
+						.stream()
+						.sorted(Entry.comparingByValue()) // applies comparator logic on vlaues comparision
+						.collect(
+								toMap(Entry::getKey, 		//keyMapper
+									  Entry::getValue, 		//valueMapper
+									  (first,second)->second, //mergeFunction
+									  LinkedHashMap::new			//mapSupplier
 						));
 				
 		System.out.println("after value sorting only with streams "+ resultMap);
 
-	}
-
-	private void valueSortingWithLambdaAndStreams(Map<Integer, String> hashMap) {
-		hashMap.values().removeIf(Objects::isNull); //removes the null values from Map
-		List<Map.Entry<Integer, String>> entries = new ArrayList<Map.Entry<Integer,String>>(hashMap.entrySet());
-
-		Collections.sort(entries, (e1,e2)->e1.getValue().compareTo(e2.getValue()));
-		Map<Integer, String> resultMap = entries.stream()
-				.filter(e -> null!=e.getValue())
-				.collect(toMap(Entry::getKey, // keyMapper
-						Entry::getValue,     // valueMapper
-						(a,b) ->a, //mergeFunction 
-						() -> new LinkedHashMap<>() //mapSupplier 
-					//	LinkedHashMap::new 
-						));
-		System.out.println("after value sorting with lambda and streams "+ resultMap);
-		
 	}
 	
 	private Map<Integer, String> createHashMap() {

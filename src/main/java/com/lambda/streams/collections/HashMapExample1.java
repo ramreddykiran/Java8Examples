@@ -16,10 +16,14 @@ public class HashMapExample1 {
 		Map<String,Integer> sourceMap = createMap();
 		
 		System.out.println("sourceMap : "+sourceMap);
-		Map<String,Integer> resultMap = sourceMap.entrySet().stream()
-										.filter(entry1 -> entry1.getValue()>150)
-										.collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
-										//.collect(Collectors.toMap(p -> p.getKey(), q -> q.getValue()));
+		Map<String,Integer> resultMap = 
+				sourceMap.entrySet()
+						.stream()
+						.filter(e -> null != e.getValue())
+						.filter(entry -> entry.getValue() > 150)
+						.collect(
+								Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+					//.collect(Collectors.toMap(p -> p.getKey(), q -> q.getValue()));
 		System.out.println("resultMap : "+resultMap);
 	}
 
@@ -28,6 +32,7 @@ public class HashMapExample1 {
 		hashMap.put("key1",200);
 		hashMap.put("key10",111);
 		hashMap.put("key9",20);
+		hashMap.put("key19",null);
 		hashMap.put("key2",90);
 		hashMap.put("key4",120);
 		hashMap.put("key3",150);

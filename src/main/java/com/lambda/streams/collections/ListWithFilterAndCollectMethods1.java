@@ -12,7 +12,9 @@ public class ListWithFilterAndCollectMethods1 {
 	public static void main(String[] args) {
 		ListWithFilterAndCollectMethods1 l1= new ListWithFilterAndCollectMethods1();
 		List<Integer> listI = Arrays.asList(1,2,3,4,5,1,2,3,4,5);
+		System.out.println("collecting odd numbers to a  list");
 		l1.collectOddNumbersToList(listI);
+		System.out.println("collecting double of odd numbers to a set");
 		l1.collectDoubleOfOddNumbersToSet(listI);
 	}
 
@@ -30,9 +32,10 @@ public class ListWithFilterAndCollectMethods1 {
 		//mutability is ok, sharing is OK. shared mutability is not recommended.
 		
 		//right way
-		List<Integer> oddNumbers = listI.stream()
-			.filter(e -> e%2 == 1)
-			.collect(toList());
+		List<Integer> oddNumbers = 
+				listI.stream()
+					.filter(e -> e%2 == 1)
+					.collect(toList());
 		
 		System.out.println(oddNumbers);
 	}
