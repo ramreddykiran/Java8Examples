@@ -1,27 +1,24 @@
 package com.lambda.streams.collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.TreeMap;
 
 import static java.util.stream.Collectors.toMap;
 
 public class MapKeyValueSortWithStreams {
+
 	public static void main(String[] args) {
 		MapKeyValueSortWithStreams obj = new MapKeyValueSortWithStreams();
 		Map<Integer, String> hashMap = obj.createHashMap();
 		System.out.println("before sorting "+ hashMap);
 		System.out.println("key based sorting " +new TreeMap<Integer, String>(hashMap));
-		
-		obj.valueSortingWithLambdaAndStreams(hashMap);
-		
+
+		System.out.println("before sorting "+ hashMap);
 		obj.valueSortingWithStreams(hashMap);
+
+		System.out.println("before sorting "+ hashMap);
+		obj.valueSortingWithLambdaAndStreams(hashMap);
+
 	}
 	
 	private void valueSortingWithLambdaAndStreams(Map<Integer, String> hashMap) {
@@ -46,6 +43,7 @@ public class MapKeyValueSortWithStreams {
 		LinkedHashMap<Integer,String> resultMap = 
 				hashMap.entrySet()
 						.stream()
+						.filter(e -> Optional.ofNullable(e.getValue()).isPresent())
 						.sorted(Entry.comparingByValue()) // applies comparator logic on vlaues comparision
 						.collect(
 								toMap(Entry::getKey, 		//keyMapper
@@ -70,6 +68,7 @@ public class MapKeyValueSortWithStreams {
 		map.put(4, "value1");
 		map.put(20, "value6");
 		map.put(2, "value7");
+		//map.put(null, "value7");
 		return map;
 	}
 
