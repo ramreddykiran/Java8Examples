@@ -1,1 +1,1 @@
-Standalone applciation programs on Java 8
+Standalone applciation programs on Java 8 and upcoming versions
