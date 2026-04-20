@@ -1,6 +1,6 @@
 package interfaces.definedmethods;
 
-public class SubClassDefined implements I1,I2{
+public class SubClassDefined implements ChildInterface {
 
 	@Override
 	public void i1m1() {

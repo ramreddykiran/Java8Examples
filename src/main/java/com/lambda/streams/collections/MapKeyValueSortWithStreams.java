@@ -43,8 +43,10 @@ public class MapKeyValueSortWithStreams {
 		LinkedHashMap<Integer,String> resultMap = 
 				hashMap.entrySet()
 						.stream()
-						.filter(e -> Optional.ofNullable(e.getValue()).isPresent())
-						.sorted(Entry.comparingByValue()) // applies comparator logic on vlaues comparision
+						.filter(e -> null != e.getValue())
+						//.filter(e -> Optional.ofNullable(e.getValue()).isPresent())
+						//.sorted(Entry.comparingByValue()) // applies comparator logic on vlaues comparision
+						.sorted(Entry.comparingByValue(Comparator.reverseOrder())) //sort in reverse order
 						.collect(
 								toMap(Entry::getKey, 		//keyMapper
 									  Entry::getValue, 		//valueMapper
@@ -90,7 +92,8 @@ keyMapper - a mapping function to produce keys
 
 valueMapper - a mapping function to produce values
 
-mergeFunction - a merge function, used to resolve collisions between values associated with the same key, as supplied to Map.merge(Object, Object, BiFunction)
+mergeFunction -if 2 values have same key, it keeps the 1st or 2nd value for the key, ignores the other one.
+			if we do not use merge function, toMap() will through IllegalStateException
 
 mapSupplier - a function which returns a new, empty Map into which the results will be inserted
 
