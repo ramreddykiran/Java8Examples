@@ -1,7 +1,9 @@
-public class Java13Examples {
+package java13;
+
+public class TextBlockExample {
 
     public static void main(String[] args) {
-        Java13Examples je = new Java13Examples();
+        TextBlockExample je = new TextBlockExample();
         je.textBlock();
     }
 

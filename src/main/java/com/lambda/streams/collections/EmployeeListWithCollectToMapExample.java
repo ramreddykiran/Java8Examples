@@ -1,8 +1,7 @@
 package com.lambda.streams.collections;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.groupingBy;
@@ -20,7 +19,7 @@ public class EmployeeListWithCollectToMapExample {
 		listEmp.add(new Employee("Ravindra","126","MALE","PSE"));
 		listEmp.add(new Employee("Jennifer","127","FEMALE","SM"));
 		listEmp.add(new Employee("Charlie","128","FEMALE","BA"));
-		listEmp.add(new Employee("Savani","129","FEMALE","PM"));
+		listEmp.add(new Employee("Sravani","129","FEMALE","PM"));
 		listEmp.add(new Employee("Bindu","130","FEMALE","SSE"));
 		listEmp.add(new Employee("Dharma","131","MALE","SE"));
 
@@ -28,6 +27,7 @@ public class EmployeeListWithCollectToMapExample {
 		obj.createMapWithNameDesgKeyEmpValue(listEmp);
 		obj.groupEmployeesWithDesg(listEmp);
 		obj.groupEmployeeNamesWithDesg(listEmp); //<desg, List<Name>>
+		obj.highestEmpIdPerDesg(listEmp);
 	}
 
 	private void createMapWithNameDesgKeyEmpValue(List<Employee> listEmp) {
@@ -54,8 +54,20 @@ public class EmployeeListWithCollectToMapExample {
 								  )
 						);
 		System.out.println("desgnamesmap "+desgNamesMap);
-				
-		
 	}
+
+	private void highestEmpIdPerDesg(List<Employee> employees) {
+		Map<String, String> maxIdPerDesg = employees.stream()
+				.collect(Collectors.groupingBy(
+						Employee::getDesg,
+						Collectors.collectingAndThen(
+						Collectors.maxBy(Comparator.comparing(Employee::getEmpid)),
+								emp -> emp.get().getEmpid()
+						)
+						));
+		System.out.println(maxIdPerDesg);
+
+	}
+
 
 }

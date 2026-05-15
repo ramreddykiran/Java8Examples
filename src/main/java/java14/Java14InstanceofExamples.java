@@ -1,7 +1,9 @@
-public class Java14Examples {
+package java14;
+
+public class Java14InstanceofExamples {
 
     public static void main(String[] args) {
-        Java14Examples je = new Java14Examples();
+        Java14InstanceofExamples je = new Java14InstanceofExamples();
         je.instanceofEx(null);
         je.instanceofEx("input");
         je.instanceofEx(212);

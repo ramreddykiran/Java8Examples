@@ -1,4 +1,6 @@
-public class Java12Examples {
+package java12;
+
+public class SwitchCaseYieldExample1 {
 
     void switchExample(int day) {
         String dayName = switch(day) {
@@ -18,6 +20,7 @@ public class Java12Examples {
                 yield "MidWeek"; //yield returns the value
             }
             case "6","7" -> {
+                System.out.println("weekend day");
                 yield "weekend";
             }
             default -> "day is out of a week range";
@@ -26,7 +29,7 @@ public class Java12Examples {
     }
 
     public static void main(String[] args) {
-        Java12Examples je = new Java12Examples();
+        SwitchCaseYieldExample1 je = new SwitchCaseYieldExample1();
         je.switchExample(1);
         je.swtichYeildExample("1");
         je.swtichYeildExample("11");
