@@ -1,4 +1,4 @@
-package com.lambda.streams.collections;
+package logical;
 
 import java.util.*;
 import java.util.Map.Entry;
